@@ -1,0 +1,10 @@
+{
+  "name": "book-keeping-api",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env index.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=24" }
+}

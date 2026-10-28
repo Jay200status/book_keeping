@@ -1,0 +1,10 @@
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; height: calc(108rpx + env(safe-area-inset-bottom)); padding: 0 24rpx env(safe-area-inset-bottom); display: flex; align-items: center; justify-content: space-around; background: #fff; box-shadow: 0 -6rpx 30rpx rgba(21, 46, 36, .06); }
+.item { width: 30%; display: flex; align-items: center; flex-direction: column; gap: 5rpx; color: #929b95; font-size: 22rpx; }
+.item.active { color: #243d33; font-weight: 600; }
+.add-item { transform: translateY(-17rpx); color: #243d33; font-weight: 600; }
+.add-circle { width: 96rpx; height: 96rpx; border-radius: 50%; background: #dcefe0; box-shadow: 0 8rpx 20rpx rgba(76, 125, 86, .2); color: #29513c; text-align: center; line-height: 86rpx; font-size: 70rpx; font-weight: 300; }
+.ledger-icon { width: 42rpx; height: 42rpx; display: flex; flex-direction: column; justify-content: center; gap: 5rpx; }
+.ledger-icon view { width: 37rpx; height: 5rpx; border-radius: 3rpx; background: currentColor; }
+.person-icon { width: 42rpx; height: 42rpx; position: relative; }
+.head { width: 15rpx; height: 15rpx; border: 4rpx solid currentColor; border-radius: 50%; margin: 0 auto; }
+.shoulder { width: 34rpx; height: 16rpx; border: 4rpx solid currentColor; border-radius: 18rpx 18rpx 0 0; border-bottom: 0; position: absolute; bottom: 1rpx; left: 0; }

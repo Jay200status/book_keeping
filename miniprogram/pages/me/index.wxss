@@ -1,0 +1,25 @@
+.eyebrow { margin-top: 10rpx; color: #8da499; font-size: 20rpx; letter-spacing: 4rpx; font-weight: 700; }
+.page-title { font-size: 54rpx; font-weight: 700; margin-top: 8rpx; margin-bottom: 36rpx; }
+.profile { display: flex; align-items: center; padding: 31rpx; }
+.avatar { width: 100rpx; height: 100rpx; border-radius: 32rpx; background: #dbeee0; color: #3e6750; display: flex; align-items: center; justify-content: center; font-size: 40rpx; font-weight: 700; }
+.profile-text { margin-left: 24rpx; flex: 1; }
+.name { font-size: 31rpx; font-weight: 700; }
+.desc { font-size: 22rpx; color: #a3aca6; margin-top: 9rpx; }
+.edit { color: #63836b; font-size: 23rpx; padding: 10rpx; }
+.name-editor { display: flex; align-items: center; padding: 20rpx 30rpx; margin-top: 16rpx; }
+.name-editor input { flex: 1; font-size: 26rpx; }
+.name-editor button { background: #e8f3e8; color: #315c41; font-size: 23rpx; margin: 0; }
+.section-title { font-size: 31rpx; font-weight: 700; margin: 50rpx 3rpx 21rpx; }
+.bind-card { padding: 34rpx; }
+.bind-head { display: flex; align-items: center; gap: 14rpx; font-size: 29rpx; font-weight: 700; }
+.bind-dot { width: 20rpx; height: 20rpx; background: #a3d8aa; border-radius: 50%; }
+.bind-copy { color: #85948a; line-height: 1.7; font-size: 24rpx; margin-top: 16rpx; }
+.code-button { margin-top: 30rpx; font-size: 25rpx; height: 76rpx; line-height: 76rpx; }
+.code-box { margin-top: 24rpx; padding: 25rpx; border-radius: 20rpx; background: #f4f8f2; color: #7d8f80; font-size: 22rpx; text-align: center; }
+.code { color: #315741; font-size: 35rpx; letter-spacing: 4rpx; font-weight: 700; margin: 15rpx 0; }
+.code-box button { margin-top: 15rpx; background: #fff; color: #4a7553; font-size: 22rpx; }
+.privacy { color: #acb6ae; font-size: 22rpx; text-align: center; margin-top: 42rpx; }
+.settings-card { padding: 0 30rpx; }
+.settings-card view { display: flex; justify-content: space-between; padding: 29rpx 0; border-bottom: 1rpx solid #eef2ed; font-size: 26rpx; color: #3d5a45; }
+.settings-card view:last-child { border: 0; }
+.settings-card text { color: #9eb6a1; font-size: 34rpx; }

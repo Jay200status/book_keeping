@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="eyebrow">QUICK BOOKKEEPING</view><view class="page-title">记一笔</view>
+  <view class="hint">收入、支出和转账，都能清楚记录。</view>
+  <view class="book-selector card"><text>当前账本</text><picker range="{{books}}" range-key="name" value="{{bookIndex}}" bindchange="pickBook"><view>{{books[bookIndex].name || '请先创建账本'}} ⌄</view></picker></view>
+  <view class="type-tabs card"><view class="{{type === 'EXPENSE' ? 'selected' : ''}}" data-type="EXPENSE" bindtap="setType">支出</view><view class="{{type === 'INCOME' ? 'selected' : ''}}" data-type="INCOME" bindtap="setType">收入</view><view class="{{type === 'TRANSFER' ? 'selected' : ''}}" data-type="TRANSFER" bindtap="setType">转账</view></view>
+  <view class="amount-card card"><view class="input-label">{{type === 'EXPENSE' ? '支出' : type === 'INCOME' ? '收入' : '转账'}}金额</view><view class="amount-row"><text>¥</text><input type="digit" placeholder="0.00" value="{{amount}}" bindinput="setAmount" /></view></view>
+  <view wx:if="{{templates.length && type !== 'TRANSFER'}}" class="templates"><view class="section-label">快捷模板 <text bindtap="saveTemplate">保存当前为模板 ＋</text></view><scroll-view scroll-x class="template-scroll"><view class="template-chip" wx:for="{{templates}}" wx:key="id" data-id="{{item.id}}" bindtap="useTemplate">{{item.name}}</view></scroll-view></view>
+  <view class="form card">
+    <view wx:if="{{type !== 'TRANSFER'}}" class="field"><view class="label">用途 <text class="required">*</text></view><input maxlength="40" placeholder="例如 午饭、工资" value="{{purpose}}" bindinput="setPurpose" /></view>
+    <view wx:if="{{type !== 'TRANSFER'}}" class="field"><view class="label">分类</view><picker range="{{categories}}" range-key="name" value="{{categoryIndex}}" bindchange="pickCategory"><view class="picker-value">{{categories[categoryIndex].icon}} {{categories[categoryIndex].name || '其他'}} ⌄</view></picker></view>
+    <view class="field"><view class="label">{{type === 'TRANSFER' ? '转出账户' : '账户'}}</view><picker range="{{accounts}}" range-key="name" value="{{accountIndex}}" bindchange="pickAccount"><view class="picker-value">{{accounts[accountIndex].name || '不指定'}} ⌄</view></picker></view>
+    <view wx:if="{{type === 'TRANSFER'}}" class="field"><view class="label">转入账户</view><picker range="{{accounts}}" range-key="name" value="{{toAccountIndex}}" bindchange="pickToAccount"><view class="picker-value">{{accounts[toAccountIndex].name || '请选择'}} ⌄</view></picker></view>
+    <view class="field"><view class="label">发生日期</view><picker mode="date" value="{{date}}" bindchange="pickDate"><view class="picker-value">{{date}} ⌄</view></picker></view>
+    <view class="field"><view class="label">时间</view><picker mode="time" value="{{time}}" bindchange="pickTime"><view class="picker-value">{{time}} ⌄</view></picker></view>
+    <view class="field note"><view class="label">备注 <text class="optional">选填</text></view><textarea maxlength="500" auto-height placeholder="想补充的细节写在这里" value="{{note}}" bindinput="setNote" /></view>
+  </view>
+  <button wx:if="{{!templates.length && type !== 'TRANSFER'}}" class="template-save" bindtap="saveTemplate">＋ 保存当前为快捷模板</button>
+  <button class="save primary" loading="{{saving}}" bindtap="save">保存账单</button>
+</view>

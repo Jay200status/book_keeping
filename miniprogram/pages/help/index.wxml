@@ -1,0 +1,7 @@
+<view class="page"><view class="eyebrow">HELP CENTER</view><view class="page-title">帮助与公告</view><view wx:if="{{loading}}" class="empty">正在加载…</view>
+  <view wx:if="{{announcements.length}}"><view class="section-title">最新公告</view><view class="card list"><view wx:for="{{announcements}}" wx:key="id" class="item"><view class="title">{{item.title}}</view><view class="body">{{item.body}}</view></view></view></view>
+  <view wx:if="{{versions.length}}"><view class="section-title">版本提示</view><view class="card list"><view wx:for="{{versions}}" wx:key="id" class="item"><view class="title">{{item.title}}</view><view class="body">{{item.body}}</view></view></view></view>
+  <view class="section-title">常见问题</view><view class="card list"><view wx:if="{{!faqs.length}}" class="empty">暂无常见问题</view><view wx:for="{{faqs}}" wx:key="id" class="item"><view class="title">{{item.title}}</view><view class="body">{{item.body}}</view></view></view>
+  <view wx:if="{{privacy.length}}"><view class="section-title">隐私政策</view><view class="card list"><view wx:for="{{privacy}}" wx:key="id" class="item"><view class="title">{{item.title}}</view><view class="body">{{item.body}}</view></view></view></view>
+  <view wx:if="{{terms.length}}"><view class="section-title">用户协议</view><view class="card list"><view wx:for="{{terms}}" wx:key="id" class="item"><view class="title">{{item.title}}</view><view class="body">{{item.body}}</view></view></view></view>
+</view>

@@ -1,0 +1,44 @@
+.topline { display: flex; align-items: center; justify-content: space-between; margin: 12rpx 0 35rpx; }
+.eyebrow { color: #8da499; font-size: 20rpx; letter-spacing: 4rpx; font-weight: 700; }
+.page-title { font-size: 54rpx; font-weight: 700; margin-top: 8rpx; }
+.dot-mark { width: 66rpx; height: 66rpx; border-radius: 50%; background: #dceee0; color: #315b42; display: flex; align-items: center; justify-content: center; font-size: 32rpx; font-weight: 700; }
+.summary { padding: 28rpx 34rpx 25rpx; background: linear-gradient(145deg, #eff8ee, #fff 65%); }
+.periods { display: flex; width: 250rpx; background: #e7efe6; border-radius: 18rpx; padding: 5rpx; margin-bottom: 38rpx; }
+.period { flex: 1; text-align: center; font-size: 23rpx; line-height: 52rpx; color: #81918a; }
+.chosen { background: white; border-radius: 14rpx; color: #284538; font-weight: 700; box-shadow: 0 3rpx 10rpx rgba(39, 77, 53, .06); }
+.summary-label { color: #667c6e; font-size: 25rpx; }
+.amount { margin-top: 8rpx; font-size: 70rpx; font-weight: 700; letter-spacing: -2rpx; }
+.currency { font-size: 34rpx; margin-right: 6rpx; }
+.date-row { display: flex; align-items: center; gap: 22rpx; margin-top: 27rpx; }
+.arrow { width: 46rpx; height: 46rpx; text-align: center; line-height: 41rpx; border-radius: 50%; background: #f3f6f1; color: #55725f; font-size: 38rpx; }
+.date-picker { color: #54705e; font-size: 23rpx; }
+.date-picker text { margin-left: 8rpx; }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; margin: 48rpx 3rpx 21rpx; font-size: 31rpx; font-weight: 700; }
+.count { color: #a3ada6; font-weight: 400; font-size: 23rpx; }
+.list { padding: 0 25rpx; }
+.record { display: flex; align-items: center; min-height: 132rpx; border-bottom: 1rpx solid #f1f3ef; }
+.record:last-child { border-bottom: 0; }
+.record-icon { display: flex; align-items: center; justify-content: center; width: 72rpx; height: 72rpx; border-radius: 22rpx; background: #edf4eb; color: #577461; font-size: 29rpx; font-weight: 600; }
+.record-main { flex: 1; margin-left: 20rpx; }
+.purpose { font-size: 28rpx; font-weight: 600; }
+.when { margin-top: 8rpx; font-size: 22rpx; color: #a1aaa4; }
+.record-money { font-size: 29rpx; font-weight: 700; }
+.chevron { color: #c7d0c9; font-size: 35rpx; margin-left: 12rpx; }
+.book-row { display: flex; align-items: center; justify-content: space-between; font-size: 26rpx; color: #52745b; margin-bottom: 20rpx; }
+.book-row picker { font-weight: 700; }
+.book-row text { font-size: 22rpx; color: #89a390; }
+.income-line { margin-top: 5rpx; font-size: 25rpx; color: #5b9b6a; }
+.budget-box { padding: 27rpx 34rpx; margin-top: 22rpx; }
+.budget-title { font-size: 28rpx; font-weight: 700; margin-bottom: 13rpx; }
+.budget-item { display: flex; justify-content: space-between; padding: 12rpx 0; font-size: 22rpx; color: #68806d; }
+.filters { display: flex; gap: 13rpx; margin-bottom: 15rpx; }
+.filters input { background: white; border-radius: 18rpx; padding: 14rpx 20rpx; flex: 1; height: 60rpx; font-size: 24rpx; }
+.filters button { background: #dfefdf; color: #426c4c; border-radius: 18rpx; font-size: 23rpx; line-height: 60rpx; height: 60rpx; margin: 0; }
+.filter-scroll { white-space: nowrap; margin-bottom: 19rpx; }
+.filter-pickers { display: flex; gap: 10rpx; width: max-content; }
+.filter-pickers picker { display: inline-block; background: #e8f2e7; color: #64826b; border-radius: 16rpx; padding: 13rpx 18rpx; font-size: 21rpx; }
+.record-money.positive { color: #5a9a6b; }
+.banner-swiper { height: 154rpx; margin-bottom: 22rpx; }
+.banner { height: 132rpx; padding: 25rpx 30rpx; background: linear-gradient(120deg,#dfeee0,#f7fbf4); color: #3f704c; }
+.banner view { font-size: 28rpx; font-weight: 700; }
+.banner text { display: block; font-size: 22rpx; margin-top: 8rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

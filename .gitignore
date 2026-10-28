@@ -1,0 +1,12 @@
+server/.env
+**/.env
+**/.env.local
+server/data/
+server/target/
+admin/node_modules/
+admin/dist/
+.idea/
+project.private.config.json
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

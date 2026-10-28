@@ -1,0 +1,18 @@
+.eyebrow { color: #8da499; font-size: 20rpx; letter-spacing: 4rpx; font-weight: 700; margin-top: 10rpx; }
+.page-title { font-size: 54rpx; font-weight: 700; margin-top: 8rpx; margin-bottom: 38rpx; }
+.amount-card { padding: 48rpx 35rpx; text-align: center; background: linear-gradient(135deg, #ecf7ed, #fff 75%); }
+.amount-caption { color: #7d9281; font-size: 24rpx; }
+.amount { font-size: 65rpx; font-weight: 700; margin: 15rpx 0; }
+.source { color: #9aa99d; font-size: 22rpx; }
+.detail-card { padding: 6rpx 34rpx; margin-top: 24rpx; }
+.row { min-height: 105rpx; display: flex; align-items: center; justify-content: space-between; gap: 25rpx; border-bottom: 1rpx solid #edf0ec; color: #93a096; font-size: 26rpx; }
+.row:last-child { border-bottom: 0; }
+.value { color: #30433a; text-align: right; flex: 1; }
+.editor { padding: 18rpx 34rpx; }
+.field { display: flex; align-items: center; justify-content: space-between; min-height: 90rpx; border-bottom: 1rpx solid #edf0ec; font-size: 26rpx; color: #8da094; }
+.field:last-child { border: 0; }
+.field input,.field picker { width: 60%; text-align: right; color: #30433a; }
+.actions { margin-top: 30rpx; display: grid; gap: 14rpx; }
+.actions button { width: 100%; font-size: 27rpx; }
+.actions .delete { background: #fff0ed; color: #c37267; }
+.comment-section{margin-top:36rpx}.comment-title{font-size:30rpx;font-weight:700;margin-bottom:18rpx}.comment-card{padding:12rpx 30rpx}.comment{padding:20rpx 0;border-bottom:1rpx solid #edf0ec;font-size:26rpx;color:#405648}.comment:last-child{border-bottom:0}.comment-meta{font-size:21rpx;color:#91a095;margin-bottom:8rpx}.comment-form{display:flex;gap:12rpx;margin-top:16rpx}.comment-form input{flex:1;background:#fff;border-radius:14rpx;padding:0 18rpx;height:82rpx}.comment-form button{width:140rpx;margin:0;font-size:24rpx}

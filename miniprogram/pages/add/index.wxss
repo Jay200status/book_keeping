@@ -1,0 +1,30 @@
+.eyebrow { margin-top: 10rpx; color: #8da499; font-size: 20rpx; letter-spacing: 4rpx; font-weight: 700; }
+.page-title { font-size: 54rpx; font-weight: 700; margin-top: 8rpx; }
+.hint { color: #95a09a; font-size: 25rpx; margin-top: 13rpx; margin-bottom: 48rpx; }
+.amount-card { padding: 33rpx 35rpx; background: linear-gradient(135deg, #eff8ef, white 80%); }
+.input-label { color: #6c826e; font-size: 25rpx; }
+.amount-row { display: flex; align-items: center; margin-top: 18rpx; color: #2b4738; }
+.amount-row text { font-size: 39rpx; margin-right: 16rpx; }
+.amount-row input { font-size: 70rpx; font-weight: 700; height: 100rpx; flex: 1; }
+.form { margin-top: 24rpx; padding: 0 34rpx; }
+.field { padding: 35rpx 0; border-bottom: 1rpx solid #edf1eb; }
+.field:last-child { border-bottom: 0; }
+.label { font-size: 28rpx; font-weight: 600; margin-bottom: 20rpx; }
+.required { color: #dc8f82; }
+.optional { color: #a3afa5; font-size: 22rpx; font-weight: 400; margin-left: 8rpx; }
+.field input,.field textarea { width: 100%; color: #2b3e33; font-size: 27rpx; }
+.field textarea { min-height: 90rpx; }
+.save { margin-top: 45rpx; height: 92rpx; line-height: 92rpx; font-size: 29rpx; }
+.tip { margin-top: 22rpx; text-align: center; color: #a0aaa4; font-size: 22rpx; }
+.book-selector { display: flex; justify-content: space-between; padding: 25rpx 32rpx; margin-bottom: 20rpx; color: #789080; font-size: 24rpx; }
+.book-selector picker { color: #315741; font-weight: 700; }
+.type-tabs { display: flex; padding: 8rpx; margin-bottom: 20rpx; background: #e8f1e8; }
+.type-tabs view { flex: 1; text-align: center; padding: 19rpx 0; color: #819785; font-size: 26rpx; }
+.type-tabs .selected { background: #fff; border-radius: 20rpx; color: #315a3e; font-weight: 700; }
+.picker-value { color: #58705e; font-size: 27rpx; }
+.templates { margin-top: 35rpx; }
+.section-label { color: #415b48; font-size: 28rpx; font-weight: 700; display: flex; justify-content: space-between; }
+.section-label text { color: #74a17d; font-size: 22rpx; font-weight: 400; }
+.template-scroll { white-space: nowrap; margin-top: 18rpx; }
+.template-chip { display: inline-block; padding: 16rpx 23rpx; border-radius: 20rpx; background: #e7f2e8; color: #527b5b; font-size: 23rpx; margin-right: 12rpx; }
+.template-save { margin-top: 24rpx; color: #62936d; background: transparent; font-size: 23rpx; }

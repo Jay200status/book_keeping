@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="eyebrow">PERSONAL SPACE</view><view class="page-title">我的</view>
+  <view class="profile card">
+    <view class="avatar">记</view>
+    <view class="profile-text"><view class="name">{{displayName}}</view><view class="desc">无需填写头像或手机号</view></view>
+    <view class="edit" bindtap="editName">编辑</view>
+  </view>
+  <view wx:if="{{editing}}" class="name-editor card"><input maxlength="30" placeholder="输入昵称（选填）" value="{{draftName}}" bindinput="nameInput" /><button bindtap="saveName">保存</button></view>
+  <view class="section-title">账本与数据</view>
+  <view class="settings-card card"><view bindtap="openManage">账本、账户、分类与成员 <text>›</text></view><view bindtap="openReport">月度与年度报告 <text>›</text></view></view>
+  <view class="section-title">帮助与反馈</view><view class="settings-card card"><view bindtap="openHelp">公告、帮助与隐私 <text>›</text></view><view bindtap="openFeedback">意见反馈 <text>›</text></view></view>
+  <view class="section-title">公众号同步</view>
+  <view class="bind-card card">
+    <view class="bind-head"><view class="bind-dot"></view><text>{{officialBound ? '已连接公众号' : '连接公众号'}}</text></view>
+    <view class="bind-copy">{{officialBound ? '向公众号发送「午饭 20元」，账单会自动出现。' : '首次使用时连接一次。之后发送「午饭 20元」，打开小程序就能看到。'}}</view>
+    <view wx:if="{{!officialBound}}">
+      <button class="code-button primary" bindtap="makeCode">生成绑定码</button>
+      <view wx:if="{{code}}" class="code-box"><text>向公众号发送</text><view class="code">绑定 {{code}}</view><text>{{expires}} 前有效，仅能用一次</text><button bindtap="copyCode">复制这句话</button></view>
+    </view>
+  </view>
+  <view class="section-title">预算与提醒</view>
+  <view class="settings-card card"><view bindtap="openPlanning">管理预算、提醒与周期账单 <text>›</text></view></view>
+  <view class="bind-card card">
+    <view class="bind-head"><view class="bind-dot"></view><text>微信订阅提醒</text></view>
+    <view class="bind-copy">接收预算超支、记账和账单到期提醒。每次授权可接收一条订阅消息。</view>
+    <button class="code-button primary" bindtap="subscribeReminders" disabled="{{!reminderAvailable}}">{{reminderAvailable ? '订阅一次提醒' : '提醒尚未配置'}}</button>
+  </view>
+  <view class="privacy">账单按微信身份保存在云端。昵称可以不填。</view>
+</view>

@@ -1,0 +1,11 @@
+<view class="bar">
+  <view class="item {{selected === 0 ? 'active' : ''}}" data-index="0" bindtap="onTap">
+    <view class="ledger-icon"><view></view><view></view><view></view></view><text>账单</text>
+  </view>
+  <view class="item add-item {{selected === 1 ? 'active' : ''}}" data-index="1" bindtap="onTap">
+    <view class="add-circle">+</view><text>添加</text>
+  </view>
+  <view class="item {{selected === 2 ? 'active' : ''}}" data-index="2" bindtap="onTap">
+    <view class="person-icon"><view class="head"></view><view class="shoulder"></view></view><text>我的</text>
+  </view>
+</view>

@@ -1,7 +1,14 @@
-# book_keeping
+# Bookkeeping
 
-这是一个记账项目的仓库。
+A bookkeeping mini program and admin management system built with Spring Boot, Vue 3, MySQL, and ECharts. The admin interface uses a light-green sidebar and includes a dashboard, user and ledger management, bill statistics, budgets and reminders, operations content, and access controls.
 
-## 项目状态
+The mini program supports silent WeChat login, income and expense entries, account transfers, shared ledgers, reports, budgets, reminders, and recurring bills that require confirmation before posting.
 
-仓库已创建。项目功能和使用说明将在后续补充。
+- [Setup, migrations, and configuration](docs/current-setup.md)
+- [Implemented features and remaining work](docs/feature-status.md)
+- [Database schema](db/schema.sql)
+- [Spring Boot backend](server/)
+- [Vue admin frontend](admin/)
+- [WeChat mini program](miniprogram/)
+
+The earlier Node.js/SQLite prototype is retained in [legacy/node-sqlite](legacy/node-sqlite/) for reference.

@@ -1,0 +1,20 @@
+{
+  "pages": ["pages/ledger/index", "pages/add/index", "pages/me/index", "pages/detail/index", "pages/manage/index", "pages/report/index", "pages/planning/index", "pages/feedback/index", "pages/help/index"],
+  "window": {
+    "navigationBarTitleText": "简记",
+    "navigationBarBackgroundColor": "#f7f8f5",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f8f5"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8b938f",
+    "selectedColor": "#263c35",
+    "list": [
+      { "pagePath": "pages/ledger/index", "text": "账单" },
+      { "pagePath": "pages/add/index", "text": "添加" },
+      { "pagePath": "pages/me/index", "text": "我的" }
+    ]
+  },
+  "style": "v2"
+}
