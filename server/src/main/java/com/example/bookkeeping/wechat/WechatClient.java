@@ -2,6 +2,7 @@ package com.example.bookkeeping.wechat;
 
 import com.example.bookkeeping.config.AppConfig;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -10,12 +11,17 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
+/**
+ * 调用小程序接口
+ */
 @Component
 public class WechatClient {
     private static final Logger log = LoggerFactory.getLogger(WechatClient.class);
@@ -29,9 +35,11 @@ public class WechatClient {
     private volatile long accessTokenExpires;
     private volatile String miniAccessToken;
     private volatile long miniAccessTokenExpires;
+    private final ObjectMapper objectMapper;
 
-    public WechatClient(AppConfig config) {
+    public WechatClient(AppConfig config, ObjectMapper objectMapper) {
         this.config = config;
+        this.objectMapper = objectMapper;
         SimpleClientHttpRequestFactory miniFactory = new SimpleClientHttpRequestFactory();
         miniFactory.setConnectTimeout(Duration.ofSeconds(2));
         miniFactory.setReadTimeout(Duration.ofSeconds(4));
@@ -45,7 +53,26 @@ public class WechatClient {
     private static String q(String text) { return URLEncoder.encode(text, StandardCharsets.UTF_8); }
 
     private JsonNode get(RestClient client, String url) {
-        JsonNode result = client.get().uri(URI.create(url)).retrieve().body(JsonNode.class);
+        //报错：Could not extract response: no suitable HttpMessageConverter found for response type [class com.fasterxml.jackson.databind.JsonNode] and content type [text/plain]
+        //原因：客户端预计收到的响应是application/json 实际收到的是text/plain 没有转换器可以把text/plain转换成JsonNode格式 所以报错
+
+        //先用字符串格式接收原始响应
+        String body = client.get()
+                .uri(URI.create(url))
+                .retrieve()
+                .body(String.class);
+        if (body == null){
+            throw new IllegalStateException("微信接口没有响应");
+        }
+        //用JsonSon的ObjectMapper转换为JsonNode格式
+        JsonNode result = null;
+        try {
+            result = objectMapper.readTree(body);
+        }catch (JsonProcessingException e){
+            log.error("解析微信响应失败，原始响应是",e);
+            throw new RuntimeException("解析微信响应失败",e);
+        }
+
         if (result == null) throw new IllegalStateException("微信接口没有返回响应");
         int errorCode = result.path("errcode").asInt(0);
         if (errorCode != 0) {
