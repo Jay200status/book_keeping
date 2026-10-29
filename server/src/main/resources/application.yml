@@ -1,0 +1,25 @@
+# Shared configuration. Supply secrets through environment variables.
+server:
+  port: ${PORT:3000}
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+app:
+  mini-app-id: ${MINI_APP_ID:}
+  mini-app-secret: ${MINI_APP_SECRET:}
+  official-app-id: ${OFFICIAL_APP_ID:}
+  official-app-secret: ${OFFICIAL_APP_SECRET:}
+  wechat-token: ${WECHAT_TOKEN:}
+  wechat-encoding-aes-key: ${WECHAT_ENCODING_AES_KEY:}
+  bind-secret: ${BIND_SECRET:}
+  admin-bootstrap-user: ${ADMIN_BOOTSTRAP_USER:}
+  admin-bootstrap-password: ${ADMIN_BOOTSTRAP_PASSWORD:}
+  mini-reminder-template-id: ${MINI_REMINDER_TEMPLATE_ID:}
+  mini-reminder-title-key: ${MINI_REMINDER_TITLE_KEY:thing1}
+  mini-reminder-time-key: ${MINI_REMINDER_TIME_KEY:time2}
+  mini-reminder-content-key: ${MINI_REMINDER_CONTENT_KEY:thing3}
+  mini-reminder-page: ${MINI_REMINDER_PAGE:pages/me/index}

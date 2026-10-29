@@ -19,26 +19,16 @@
 
 ## 本地运行服务端
 
-需要 Java 21、Maven 3.6.3+ 和 MySQL 8.0.16+。Spring Boot 配置在 [application.properties](../server/src/main/resources/application.properties)，其中的密钥从环境变量读取。先执行 [建表脚本](../db/schema.sql)。若已执行过之前版本的建表脚本，改用 [增量迁移](../db/migrations/001_java_server.sql)。PowerShell 示例：
+需要 Java 21、Maven 3.6.3+ 和 MySQL 8.0.16+。公共配置在 [application.yml](../server/src/main/resources/application.yml)，本地数据库地址和用户名在 [application-dev.yml](../server/src/main/resources/application-dev.yml)，密码从忽略提交的 `server/.env` 读取。先执行 [建表脚本](../db/schema.sql)。若已执行过之前版本的建表脚本，改用 [增量迁移](../db/migrations/001_java_server.sql)。PowerShell 本地启动示例：
 
 ```powershell
-cd server
-$env:DB_URL = 'jdbc:mysql://127.0.0.1:3306/book_keeping?useUnicode=true&characterEncoding=utf8&connectionTimeZone=Asia/Shanghai'
-$env:DB_USER = 'root' # 换成有 book_keeping 库读写权限的账号
-$env:DB_PASSWORD = '你的数据库密码'
-$env:MINI_APP_ID = '你的小程序AppID'
-$env:MINI_APP_SECRET = '你的小程序AppSecret'
-$env:OFFICIAL_APP_ID = '你的公众号AppID'
-$env:OFFICIAL_APP_SECRET = '你的公众号AppSecret'
-$env:WECHAT_TOKEN = '自定义随机回调Token'
-$env:WECHAT_ENCODING_AES_KEY = '公众号安全模式EncodingAESKey'
-$env:BIND_SECRET = '自定义长随机绑定密钥'
-mvn spring-boot:run
+& .\server\load-local-env.ps1
+mvn -f server/pom.xml spring-boot:run
 ```
 
 访问 `http://127.0.0.1:3000/health` 应返回 `{"ok":true}`。`mvn test` 运行消息解析和微信消息解密单元测试。小程序身份接口现在直接请求微信，联调需要真实 AppID/Secret。
 
-在 IntelliJ IDEA 中，请打开 `server/pom.xml` 并作为 Maven 项目导入。启动类是 `server/src/main/java/com/example/bookkeeping/Application.java`，其中的 `main` 方法可直接运行；配置文件是 `server/src/main/resources/application.properties`。
+在 IntelliJ IDEA 中，请打开 `server/pom.xml` 并作为 Maven 项目导入。启动类是 `server/src/main/java/com/example/bookkeeping/Application.java`，其中的 `main` 方法可直接运行；本地运行需启用 `dev` profile 并提供 `DB_PASSWORD` 环境变量。
 
 在微信开发者工具中导入 `miniprogram/`。将 `miniprogram/config.js` 的 `API_BASE` 改成服务端地址。本机联调可以暂时使用 `http://127.0.0.1:3000`，并在开发者工具关闭“校验合法域名”；真机及发布必须用在小程序后台配置的 HTTPS request 合法域名。把 `project.config.json` 的 `appid` 换成自己的小程序 AppID。
 

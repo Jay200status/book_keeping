@@ -1,6 +1,6 @@
 $envPath = Join-Path $PSScriptRoot '.env'
 $allowed = @(
-    'PORT', 'DB_URL', 'DB_USER', 'DB_PASSWORD',
+    'PORT', 'SPRING_PROFILES_ACTIVE', 'DB_URL', 'DB_USER', 'DB_PASSWORD',
     'MINI_APP_ID', 'MINI_APP_SECRET', 'OFFICIAL_APP_ID', 'OFFICIAL_APP_SECRET',
     'WECHAT_TOKEN', 'WECHAT_ENCODING_AES_KEY', 'BIND_SECRET',
     'ADMIN_BOOTSTRAP_USER', 'ADMIN_BOOTSTRAP_PASSWORD',
@@ -17,7 +17,16 @@ foreach ($line in [System.IO.File]::ReadAllLines($envPath)) {
     }
 }
 
-foreach ($name in @('DB_URL', 'DB_USER', 'DB_PASSWORD')) {
+if ([string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable('SPRING_PROFILES_ACTIVE', 'Process'))) {
+    [Environment]::SetEnvironmentVariable('SPRING_PROFILES_ACTIVE', 'dev', 'Process')
+}
+
+$required = if ([Environment]::GetEnvironmentVariable('SPRING_PROFILES_ACTIVE', 'Process') -eq 'dev') {
+    @('DB_PASSWORD')
+} else {
+    @('DB_URL', 'DB_USER', 'DB_PASSWORD')
+}
+foreach ($name in $required) {
     if ([string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable($name, 'Process'))) {
         throw "Missing required setting: $name"
     }

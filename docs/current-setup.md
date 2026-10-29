@@ -10,18 +10,19 @@ For an existing database, apply migrations in numerical order. If it predates `0
 
 ## Backend
 
-Set these environment variables before starting `server/` with `mvn spring-boot:run`. `DB_URL`, `DB_USER`, and `DB_PASSWORD` are required; `application.properties` contains references to them rather than connection credentials. For the local MySQL instance, run `server/load-local-env.ps1` in the same PowerShell session before starting the backend. It reads the ignored `server/.env` file created during local setup:
+`server/src/main/resources/application.yml` holds shared settings and environment-variable references. `application-dev.yml` supplies the local MySQL URL and `bookkeeping` username. For local development, run `server/load-local-env.ps1` in the same PowerShell session before starting the backend. It loads `server/.env`, selects the `dev` profile, and supplies the database password:
 
 ```powershell
 & .\server\load-local-env.ps1
 mvn -f server/pom.xml spring-boot:run
 ```
 
-The local `book_keeping` database has a dedicated `bookkeeping` account. Its generated password is stored only in the ignored `server/.env`. That file already contains the mini-program AppID and an empty `MINI_APP_SECRET` entry. Fill in the secret locally before testing silent WeChat login; the loader accepts the other application environment variables listed below too.
+The local `book_keeping` database has a dedicated `bookkeeping` account. Its generated password is stored only in the ignored `server/.env`. That file already contains the mini-program AppID and an empty `MINI_APP_SECRET` entry. Fill in the secret locally before testing silent WeChat login. For non-dev profiles, supply `DB_URL`, `DB_USER`, and `DB_PASSWORD` through the environment.
 
 | Variable | Purpose |
 | --- | --- |
-| `DB_URL`, `DB_USER`, `DB_PASSWORD` | MySQL connection |
+| `SPRING_PROFILES_ACTIVE` | Selects a profile; the local loader defaults to `dev` |
+| `DB_URL`, `DB_USER`, `DB_PASSWORD` | MySQL connection; local `dev` profile supplies URL and username, while password stays in `server/.env` |
 | `MINI_APP_ID`, `MINI_APP_SECRET` | Mini program identity and subscription messages |
 | `OFFICIAL_APP_ID`, `OFFICIAL_APP_SECRET` | Official account bookkeeping |
 | `WECHAT_TOKEN`, `WECHAT_ENCODING_AES_KEY`, `BIND_SECRET` | Official account callback and binding |
