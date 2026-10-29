@@ -1,5 +1,8 @@
 USE book_keeping;
 
+-- MySQL 8.4 requires an exact unique parent key for the budget category foreign key.
+ALTER TABLE category ADD UNIQUE KEY uk_category_book_id (book_id,id);
+
 CREATE TABLE budget_rule (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   book_id BIGINT UNSIGNED NOT NULL,

@@ -10,7 +10,14 @@ For an existing database, apply migrations in numerical order. If it predates `0
 
 ## Backend
 
-Set these environment variables before starting `server/` with `mvn spring-boot:run`:
+Set these environment variables before starting `server/` with `mvn spring-boot:run`. `DB_URL`, `DB_USER`, and `DB_PASSWORD` are required; `application.properties` contains references to them rather than connection credentials. For the local MySQL instance, run `server/load-local-env.ps1` in the same PowerShell session before starting the backend. It reads the ignored `server/.env` file created during local setup:
+
+```powershell
+& .\server\load-local-env.ps1
+mvn -f server/pom.xml spring-boot:run
+```
+
+The local `book_keeping` database has a dedicated `bookkeeping` account. Its generated password is stored only in the ignored `server/.env`. That file already contains the mini-program AppID and an empty `MINI_APP_SECRET` entry. Fill in the secret locally before testing silent WeChat login; the loader accepts the other application environment variables listed below too.
 
 | Variable | Purpose |
 | --- | --- |
@@ -30,7 +37,13 @@ The sidebar contains dashboard, user center, ledger management, bill statistics,
 
 ## Mini program
 
-Import `miniprogram/` into WeChat Developer Tools. Set its AppID in `project.config.json` and the backend URL in `config.js`. For real devices, use a configured HTTPS request domain. The mini program supports ledgers, accounts, categories, income, expense, transfers, quick templates, shared ledger invitations, reports, help content, and feedback.
+Import `miniprogram/` into WeChat Developer Tools. The local simulator uses `http://127.0.0.1:3000` from `miniprogram/config.js`; project settings disable request-domain validation for this local development setup. For real devices or release, replace that URL with your reachable HTTPS backend, register its host as a WeChat request domain, and re-enable URL validation. The mini program supports ledgers, accounts, categories, income, expense, transfers, quick templates, shared ledger invitations, reports, help content, and feedback.
+
+The backend was started on port 3000 during local setup. Restart it after filling in `MINI_APP_SECRET` or changing any other environment setting. A separate temporary test instance was verified on port 3001 and stopped afterward.
+
+## Backend packages
+
+Spring Boot classes are grouped under `admin`, `finance`, `planning`, `content`, `wechat`, `config`, and `web` beneath `com.example.bookkeeping`. The application entry point remains in the parent package so component scanning discovers all feature packages.
 
 ## WeChat subscription reminders
 

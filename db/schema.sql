@@ -56,6 +56,7 @@ CREATE TABLE category (
   PRIMARY KEY (id),
   UNIQUE KEY uk_category_book_type_name (book_id, type, name),
   UNIQUE KEY uk_category_book_type_id (book_id, type, id),
+  UNIQUE KEY uk_category_book_id (book_id, id),
   CONSTRAINT fk_category_book FOREIGN KEY (book_id) REFERENCES account_book (id),
   CONSTRAINT ck_category_type CHECK (type IN ('INCOME', 'EXPENSE'))
 ) ENGINE=InnoDB COMMENT='收支分类；停用后保留历史记录';

@@ -4,7 +4,7 @@
   "projectname": "book-keeping",
   "appid": "wxafd4c676421c7667",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": false,
