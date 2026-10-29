@@ -10,12 +10,16 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 @Component
 public class WechatClient {
+    private static final Logger log = LoggerFactory.getLogger(WechatClient.class);
+
     public record Identity(String openId, String unionId) {}
 
     private final AppConfig config;
@@ -42,7 +46,12 @@ public class WechatClient {
 
     private JsonNode get(RestClient client, String url) {
         JsonNode result = client.get().uri(URI.create(url)).retrieve().body(JsonNode.class);
-        if (result == null || result.path("errcode").asInt(0) != 0) throw new IllegalStateException("微信接口返回错误");
+        if (result == null) throw new IllegalStateException("微信接口没有返回响应");
+        int errorCode = result.path("errcode").asInt(0);
+        if (errorCode != 0) {
+            log.warn("微信接口返回错误码 {}", errorCode);
+            throw new IllegalStateException("微信接口返回错误");
+        }
         return result;
     }
 
