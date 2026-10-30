@@ -31,9 +31,9 @@
 .budget-box { padding: 27rpx 34rpx; margin-top: 22rpx; }
 .budget-title { font-size: 28rpx; font-weight: 700; margin-bottom: 13rpx; }
 .budget-item { display: flex; justify-content: space-between; padding: 12rpx 0; font-size: 22rpx; color: #68806d; }
-.filters { display: flex; gap: 13rpx; margin-bottom: 15rpx; }
-.filters input { background: white; border-radius: 18rpx; padding: 14rpx 20rpx; flex: 1; height: 60rpx; font-size: 24rpx; }
-.filters button { background: #dfefdf; color: #426c4c; border-radius: 18rpx; font-size: 23rpx; line-height: 60rpx; height: 60rpx; margin: 0; }
+.filters { display: flex; align-items: stretch; gap: 13rpx; margin-bottom: 15rpx; }
+.filters input { box-sizing: border-box; background: white; border-radius: 18rpx; padding: 0 20rpx; flex: 1; min-width: 0; height: 88rpx; font-size: 24rpx; }
+.filters button { box-sizing: border-box; display: flex; align-items: center; justify-content: center; background: #dfefdf; color: #426c4c; border-radius: 18rpx; padding: 0 28rpx; font-size: 23rpx; line-height: 1; height: 88rpx; margin: 0; }
 .filter-scroll { white-space: nowrap; margin-bottom: 19rpx; }
 .filter-pickers { display: flex; gap: 10rpx; width: max-content; }
 .filter-pickers picker { display: inline-block; background: #e8f2e7; color: #64826b; border-radius: 16rpx; padding: 13rpx 18rpx; font-size: 21rpx; }
