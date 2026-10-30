@@ -19,6 +19,13 @@ public class ApiController {
     private final LedgerService ledger;
 
     public ApiController(LedgerService ledger) { this.ledger = ledger; }
+
+    /**
+     * 根据键获取值并转成字符串格式返回
+     * @param body
+     * @param key
+     * @return
+     */
     private static String value(Map<String, Object> body, String key) {
         Object result = body.get(key);
         return result == null ? null : result.toString();
@@ -32,8 +39,15 @@ public class ApiController {
     @GetMapping("/health")
     public Map<String, Boolean> health() { return Map.of("ok", true); }
 
+    /**
+     * 登录
+     * @param body
+     * @param request
+     * @return
+     */
     @PostMapping("/api/session")
     public Map<String, String> session(@RequestBody Map<String, Object> body, HttpServletRequest request) {
+        //request.getRemoteAddr()返回当前http请求的客户端的ip地址
         return ledger.createSession(value(body, "code"), value(body, "deviceInfo"), request.getRemoteAddr());
     }
 

@@ -1,11 +1,14 @@
 const { API_BASE } = require('./config');
 
 App({
+  //取出本地缓存的token
   globalData: { token: wx.getStorageSync('token') || '' },
   async ensureSession() {
     if (this.globalData.token) return this.globalData.token;
+    //sessionPromise记录当前是否正在登录
     if (this.sessionPromise) return this.sessionPromise;
     this.sessionPromise = new Promise((resolve, reject) => {
+      //获取code 有效期：5分钟
       wx.login({ success: result => result.code ? resolve(result.code) : reject(new Error('微信身份获取失败')), fail: reject });
     }).then(code => new Promise((resolve, reject) => {
       wx.request({

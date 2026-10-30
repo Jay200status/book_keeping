@@ -8,13 +8,13 @@ spring:
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
 
 app:
-  mini-app-id: ${MINI_APP_ID:}
-  mini-app-secret: ${MINI_APP_SECRET:}
+  mini-app-id: ${spring.mini-app.app_id}
+  mini-app-secret: ${spring.mini-app.app_secret}
   official-app-id: ${OFFICIAL_APP_ID:}
   official-app-secret: ${OFFICIAL_APP_SECRET:}
   wechat-token: ${WECHAT_TOKEN:}

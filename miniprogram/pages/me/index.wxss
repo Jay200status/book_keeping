@@ -14,7 +14,7 @@
 .bind-head { display: flex; align-items: center; gap: 14rpx; font-size: 29rpx; font-weight: 700; }
 .bind-dot { width: 20rpx; height: 20rpx; background: #a3d8aa; border-radius: 50%; }
 .bind-copy { color: #85948a; line-height: 1.7; font-size: 24rpx; margin-top: 16rpx; }
-.code-button { margin-top: 30rpx; font-size: 25rpx; height: 76rpx; line-height: 76rpx; }
+.code-button { display: flex; justify-content: center; align-items: center; margin-top: 30rpx; font-size: 25rpx; height: 76rpx;  }
 .code-box { margin-top: 24rpx; padding: 25rpx; border-radius: 20rpx; background: #f4f8f2; color: #7d8f80; font-size: 22rpx; text-align: center; }
 .code { color: #315741; font-size: 35rpx; letter-spacing: 4rpx; font-weight: 700; margin: 15rpx 0; }
 .code-box button { margin-top: 15rpx; background: #fff; color: #4a7553; font-size: 22rpx; }

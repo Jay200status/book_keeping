@@ -1,6 +1,8 @@
 const { API_BASE } = require('../config');
 
 async function request(path, method = 'GET', data, retried = false) {
+  //app.js中的App({...})会创建全局唯一实例
+  //getApp()的作用是在任意地方取到这个实例
   const app = getApp();
   const token = await app.ensureSession();
   return new Promise((resolve, reject) => {
