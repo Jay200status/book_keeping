@@ -156,7 +156,8 @@ public class WxMessageProcessService {
             /*设置十分钟有效期 用户可能点进公众号没那么快*/
             redisTemplate.opsForValue().setIfAbsent(ticketKey, toJson(ticketValue), 10, TimeUnit.MINUTES);
             /*向指定公众号用户发送小程序链接*/
-            String replyContent = "首次记录需先进入小程序 请先点击" + "" + "?ticket=" + ticket + "进入小程序";
+            String bindH5Url = "https://prerequisite-columns-utils-champion.trycloudflare.com/bind.html";
+            String replyContent = "首次记录需先进入小程序 请先点击" + bindH5Url + "?ticket=" + ticket + "进入小程序";
             if (expense == null) {
                 replyContent = "\n另外，格式错误，请按 [用途 金额] 发送（如：早餐 15）。" + replyContent;
             }

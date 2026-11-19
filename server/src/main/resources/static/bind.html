@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>正在跳转小程序...</title>
+    <!-- 引入微信 JS-SDK -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+</head>
+<body>
+<div style="text-align: center; margin-top: 50px; color: #666;">
+    正在为您打开小程序，请稍候...
+</div>
+
+<script>
+    // 从 URL 中提取 ticket 参数
+    const urlParams = new URLSearchParams(window.location.search);
+    const ticket = urlParams.get('ticket');
+
+    if (ticket) {
+        // 调用微信 JS-SDK，跳转到小程序的指定页面，并把 ticket 带过去
+        wx.miniProgram.navigateTo({
+            appid: 'wxafd4c676421c7667',
+            url: '/pages/guide/index?ticket=' + ticket,
+            envVersion: 'develop',
+            success: function() { console.log("跳转成功"); },
+            fail: function(err) {
+                alert("跳转失败，请确认是否在微信内打开，或检查小程序路径是否正确");
+            }
+        });
+    } else {
+        alert("链接已失效，请重新在公众号发送消息获取");
+    }
+</script>
+</body>
+</html>
