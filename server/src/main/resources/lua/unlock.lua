@@ -1,9 +1,5 @@
-local redis = redis
-local KEYS = KEYS
-local ARGV = ARGV
-
-if redis.call('get',KEYS[1] == ARGV[1]) then
-    return redis.call('del',KEYS[1])
-else
-    return 0
+if redis.call('GET', KEYS[1]) == ARGV[1] then
+    return redis.call('DEL', KEYS[1])
 end
+
+return 0

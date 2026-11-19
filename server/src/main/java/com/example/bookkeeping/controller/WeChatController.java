@@ -29,12 +29,6 @@ public class WeChatController {
     /*微信公众号配置的token*/
     @Value("${wechat.token}")
     private String token;
-    /*微信公众号appid*/
-    @Value("${wechat.app-id}")
-    private String appId;
-    /*消息加解密密钥*/
-    @Value("${wechat.encoding-aes-key}")
-    private String  encodingAesKey;
 
     /**
      * 校验签名
@@ -88,7 +82,7 @@ public class WeChatController {
         return echostr;
     }
 
-    @PostMapping( produces = "text/plain;charset=UTF-8")
+    @PostMapping
     public String receiveMessage(
             @RequestParam("signature") String signature,
             @RequestParam("timestamp") String timestamp,
@@ -122,12 +116,11 @@ public class WeChatController {
                 inMessage = WxMpXmlMessage.fromXml(xml);
             }
             log.info("解析之后的用户消息:{}",inMessage);
+            return wxMessageProcessService.processMessage(inMessage);
         } catch (Exception e) {
             log.error("微信消息安全校验或解密失败，msg_signature={}", msgSignature, e);
-            return "error";
+            return "success";
         }
-        wxMessageProcessService.processMessage(inMessage);
-        return "success";
     }
 
 
